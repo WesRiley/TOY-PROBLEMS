@@ -1,0 +1,33 @@
+var binarySearch = function(array, value){
+  var middle = (array.length-1)/2
+  var index = 0
+  if(array[middle] <= value){
+    console.log(array[middle])
+      for(var i = middle; i < array.length;i++){
+          if(array[i] === value){
+            
+               index = i
+          }
+      }
+  }
+    else if(array[middle] >= value){
+      for(var i = middle; i > 0; i-- ){
+          if(array[i] === value){
+              index = i
+          }
+      }
+  }
+  else{
+    index = -1
+  }
+
+  return index
+}
+
+console.log(`Test1: expected ${binarySearch([5], 4)} to be -1`);
+console.log(`Test2: expected ${binarySearch([11, 12, 13, 14, 15], 11)} to be 0`);
+console.log(`Test3: expected ${binarySearch([11, 12, 13, 14, 15], 12)} to be 1`);
+console.log(`Test4: expected ${binarySearch([11, 12, 13, 14, 15], 13)} to be 2`);
+console.log(`Test5: expected ${binarySearch([11, 12, 13, 14, 15], 14)} to be 3`);
+console.log(`Test6: expected ${binarySearch([11, 12, 13, 14, 15], 15)} to be 4`);
+console.log(`Test7: expected ${binarySearch([11, 12, 13, 14, 15], 16)} to be -1`);
