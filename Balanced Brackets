@@ -1,0 +1,62 @@
+function isBalanced (str) {
+  // your code here!
+  var obj ={'(':1, '{':2, '[':3, ')':-1, '}':-2, ']':-3}
+  var count = 0 
+  var arr = str.split('');
+  if(arr[0] === ')' || arr[0] === '}' || arr[0] === ']'){
+    return false;
+  }
+  if(arr[arr.length-1] === '(' || arr[arr.length-1] === '{' || arr[arr.length-1] === '['){
+    return false
+  }
+  for(key in obj){
+     // console.log(obj[key])
+  var i = 0
+  while( i < (arr.length/2)) {
+    var element = arr.shift(arr[i]);
+   i++
+    if(element === key){
+      count = count + obj[key]
+     // console.log(count)
+  }else{
+      count = 0
+    }
+    var j = (arr.length/2);
+    while(arr.length > j){
+      var end = arr.pop(arr[j])
+      i--
+      if(end === key){
+        count = count + obj[key]
+      }else{
+        count = 0
+      }
+    }
+  
+  }
+  if(count === 0){
+    return true
+  }
+  else{
+    return false
+  }
+  
+  }   
+  
+};
+
+console.log(`Test1: expected false and got ${isBalanced(')(')}`);
+console.log(`Test2: expected false and got ${isBalanced('()(()()()())((()(()()))')}`);
+console.log(`Test3: expected true and got ${isBalanced('[[[{{{((()))}}}]]]')}`);
+console.log(`Test4: expected true and got ${isBalanced('(((10 ) ()) ((?)(:)))')}`);
+console.log(`Test5: expected true and got ${isBalanced('(x + y) - (4)')}`);
+console.log(`Test6: expected false and got ${isBalanced('({)}')}`);
+console.log(`Test7: expected false and got ${isBalanced('[]]')}`);
+console.log(`Test8: expected false and got ${isBalanced('(50)(')}`);
+console.log(`Test9: expected true and got ${isBalanced('{}')}`);
+console.log(`Test10: expected false and got ${isBalanced('{')}`);
+console.log(`Test11: expected false and got ${isBalanced('[]}{()')}`);
+console.log(`Test12: expected false and got ${isBalanced(')))()(((')}`);
+console.log(`Test13: expected false and got ${isBalanced('}')}`);
+console.log(`Test14: expected true and got ${isBalanced('[{()}]')}`);
+console.log(`Test15: expected false and got ${isBalanced('[{]}')}`);
+console.log(`Test16: expected true and got ${isBalanced('[{}]')}`);
