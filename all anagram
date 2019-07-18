@@ -1,0 +1,19 @@
+var anagrams = function(str) {
+  var arr = [];
+  var results = [];
+  var emptyStr = '';
+  if(results.length === 0){
+     //results.push(str)
+  }
+  for(var i = 0; i < str.length; i++){
+    arr.push(str[i])
+    arr.forEach(function(letter){
+       emptyStr += letter;
+    })
+  }
+       console.log(emptyStr)
+//console.log(string)
+}
+
+
+console.log(anagrams('abc'))
