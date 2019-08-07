@@ -1,20 +1,26 @@
 var quickSort = function(array){
-  for(var i = 0; i < array.length; i++){
-    var end = array.length - 1
-    if(array[0] > array[end]){
-      [array[0],array[end]] = [array[end],array[0]]
-      end--
-      console.log(array)
-    }
-   
-      if(array[i] > array[end]){
-      [array[i],array[end]] = [array[end],array[i]]
-      i++
-      console.log(array)
-    }
+var middleIndex = Math.floor(array.length/2)
+var left = []
+var center = []
+var right = []
+if(array.length < 2){
+  return array
+}  
+for(var i = 0; i < array.length; i++){
+  if(array[i] < array[middleIndex]){
+    left.push(array[i])
+  }
+  else if(array[i] > array[middleIndex]){
+    right.push(array[i])
+  }
+  else if(array[i] === array[middleIndex]){
+    center.push(array[i])
   }
 
 }
+return quickSort(left).concat(center,quickSort(right))
+}
+
 const test1 = quickSort([8,7,3,6,9,2,4,5,1]);
 console.log(`Should sort a short array of integers: expected [1,2,3,4,5,6,7,8,9] and got ${JSON.stringify(test1)}`);
 
